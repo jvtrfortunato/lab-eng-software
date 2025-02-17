@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Número Primo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Verificador de Número Primo</h2>
+        <input type="number" id="numero" placeholder="Digite um número" min="1">
+        <button onclick="verificarNumero()">Verificar</button>
+    </div>
+
+    <script>
+        function ehPrimo(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function verificarNumero() {
+            let numero = document.getElementById("numero").value;
+            numero = parseInt(numero);
+            
+            if (isNaN(numero) || numero <= 0) {
+                alert("Por favor, insira um número inteiro positivo válido.");
+                return;
+            }
+            
+            if (ehPrimo(numero)) {
+                alert(`O número ${numero} é primo.`);
+            } else {
+                alert(`O número ${numero} não é primo.`);
+            }
+        }
+    </script>
+</body>
+</html>
