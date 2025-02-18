@@ -1,9 +1,12 @@
+<!-- 1)Implemente um script JavaScript que solicite ao usuário um número inteiro 
+positivo. Assim que o usuário digitar um valor válido informe em uma janela 
+de alerta se o número é par ou ímpar. -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificador de Número Primo</title>
+    <title>Verificador de Par ou Ímpar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,20 +46,12 @@
 </head>
 <body>
     <div class="container">
-        <h2>Verificador de Número Primo</h2>
+        <h2>Verificador de Par ou Ímpar</h2>
         <input type="number" id="numero" placeholder="Digite um número" min="1">
         <button onclick="verificarNumero()">Verificar</button>
     </div>
 
     <script>
-        function ehPrimo(num) {
-            if (num < 2) return false;
-            for (let i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i === 0) return false;
-            }
-            return true;
-        }
-
         function verificarNumero() {
             let numero = document.getElementById("numero").value;
             numero = parseInt(numero);
@@ -66,10 +61,10 @@
                 return;
             }
             
-            if (ehPrimo(numero)) {
-                alert(`O número ${numero} é primo.`);
+            if (numero % 2 === 0) {
+                alert(`O número ${numero} é par.`);
             } else {
-                alert(`O número ${numero} não é primo.`);
+                alert(`O número ${numero} é ímpar.`);
             }
         }
     </script>

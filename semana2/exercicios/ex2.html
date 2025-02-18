@@ -1,0 +1,65 @@
+<!-- 2)Pesquise a utilização do método setTimeout() e implemente 
+um relógio que atualize o horário a cada segundo: 17:06:41
+ -->
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .clock {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Relógio Atual</h1>
+        <p id="horario" class="clock"></p>
+    </div>
+
+    <script>
+        function atualizarRelogio() {
+            const data = new Date();
+            let horas = data.getHours();
+            let minutos = data.getMinutes();
+            let segundos = data.getSeconds();
+
+            // Adiciona zero à esquerda se o número for menor que 10
+            horas = horas < 10 ? `0${horas}` : horas;
+            minutos = minutos < 10 ? `0${minutos}` : minutos;
+            segundos = segundos < 10 ? `0${segundos}` : segundos;
+
+            const horarioFormatado = `${horas}:${minutos}:${segundos}`;
+            document.getElementById("horario").innerText = horarioFormatado;
+
+            // Chama a função novamente após 1 segundo (1000ms)
+            setTimeout(atualizarRelogio, 1000);
+        }
+
+        // Inicia o relógio ao carregar a página
+        atualizarRelogio();
+    </script>
+</body>
+</html>
