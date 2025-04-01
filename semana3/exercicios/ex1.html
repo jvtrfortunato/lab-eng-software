@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+    <link rel="stylesheet" href="css/ex1.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Insira um animal</h2>
+        <input type="text" id="animal" placeholder="Ex: Coala">
+        <button onclick="adicionarAnimal()">Adicionar</button>
+        <ol id="lista"></ol>
+    </div>
+
+    <script>
+        let animais = []; // Array para armazenar os animais
+
+        function adicionarAnimal() {
+            let animal = document.getElementById("animal").value.trim();
+            
+            if (animal === "") {
+                alert("Digite um valor válido!");
+                return;
+            }
+
+            animais.push(animal); // Adiciona o animal ao array
+            animais.sort(); // Ordena os animais em ordem alfabética
+
+            atualizarLista(); // Atualiza a exibição da lista
+
+            document.getElementById("animal").value = ""; // Limpa o campo de input
+        }
+
+        function atualizarLista() {
+            let lista = document.getElementById("lista");
+            lista.innerHTML = ""; // Limpa a lista antes de exibir os novos animais
+
+            animais.forEach(function(animal) {
+                let li = document.createElement("li");
+                li.textContent = animal;
+                lista.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
