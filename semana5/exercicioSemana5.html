@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Pessoas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // Criando a div principal
+        const container = document.createElement("div");
+        container.classList.add("container");
+
+        // Criando título
+        const titulo = document.createElement("h2");
+        titulo.textContent = "Contador de Pessoas";
+        container.appendChild(titulo);
+
+        // Variáveis de controle
+        let homens = 0;
+        let mulheres = 0;
+
+        // Função para atualizar os valores
+        function atualizarContagem() {
+            totalHomens.textContent = `Homens: ${homens}`;
+            totalMulheres.textContent = `Mulheres: ${mulheres}`;
+            totalPessoas.textContent = `Total: ${homens + mulheres}`;
+        }
+
+        // Função para criar os blocos de contadores
+        function criarContador(imgSrc, imgAlt, adicionarCallback, removerCallback) {
+            const div = document.createElement("div");
+            div.classList.add("contador");
+
+            // Criando a imagem
+            const img = document.createElement("img");
+            img.src = imgSrc;
+            img.alt = imgAlt;
+
+            const botaoAdicionar = document.createElement("button");
+            botaoAdicionar.textContent = "+";
+            botaoAdicionar.classList.add("btn-add");
+            botaoAdicionar.addEventListener("click", adicionarCallback);
+
+            const botaoRemover = document.createElement("button");
+            botaoRemover.textContent = "-";
+            botaoRemover.classList.add("btn-remove");
+            botaoRemover.addEventListener("click", removerCallback);
+
+            div.appendChild(img);
+            div.appendChild(botaoRemover);
+            div.appendChild(botaoAdicionar);
+
+            return div;
+        }
+
+        // Criando elementos do contador de homens
+        const contadorHomens = criarContador(
+            "img/homem.png", // Caminho da imagem
+            "Ícone de Homem",
+            () => { homens++; atualizarContagem(); },
+            () => { if (homens > 0) homens--; atualizarContagem(); }
+        );
+
+        const contadorMulheres = criarContador(
+            "img/mulher.png", // Caminho da imagem
+            "Ícone de Mulher",
+            () => { mulheres++; atualizarContagem(); },
+            () => { if (mulheres > 0) mulheres--; atualizarContagem(); }
+        );
+
+        // Criando botão de reset
+        const botaoReset = document.createElement("button");
+        botaoReset.textContent = "Resetar";
+        botaoReset.classList.add("btn-reset");
+        botaoReset.addEventListener("click", () => {
+            homens = 0;
+            mulheres = 0;
+            atualizarContagem();
+        });
+
+        // Criando campos de exibição do total
+        const totalHomens = document.createElement("p");
+        totalHomens.classList.add("resultado");
+
+        const totalMulheres = document.createElement("p");
+        totalMulheres.classList.add("resultado");
+
+        const totalPessoas = document.createElement("p");
+        totalPessoas.classList.add("resultado");
+
+        // Adicionando elementos ao container
+        container.appendChild(contadorHomens);
+        container.appendChild(totalHomens);
+        
+        container.appendChild(contadorMulheres);
+        container.appendChild(totalMulheres);
+        
+        container.appendChild(totalPessoas);
+        container.appendChild(botaoReset);
+
+        // Adicionando ao body
+        document.getElementById("app").appendChild(container);
+
+        // Inicializando os valores
+        atualizarContagem();
+    </script>
+</body>
+</html>
