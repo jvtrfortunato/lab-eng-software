@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 25%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.opcao {
+    display: flex;
+    gap: 5px;
+}
+
+.todos-campos {
+    display: flex;
+    flex-direction: column;
+}
+
+#campos-comuns {
+    display: flex;
+    flex-direction: column;
+}
+
+.campos-professor {
+    display: flex;
+    flex-direction: column;
+}
+
+.campos-aluno {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+.pequeno {
+    width: 22%;
+}
+
+.medio {
+    width: 50%;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    width: 25%;
+    padding: 8px;
+}
