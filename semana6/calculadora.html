@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculadora" id="calculadora"></div>
+    </div>
+
+    <script>
+        const botoes = [
+            { label: "AC", classe: "cinza" },
+            { label: "+/-", classe: "cinza" },
+            { label: "%", classe: "cinza" },
+            { label: "/", classe: "laranja" },
+            { label: "7", classe: "preto" },
+            { label: "8", classe: "preto" },
+            { label: "9", classe: "preto" },
+            { label: "*", classe: "laranja" },
+            { label: "4", classe: "preto" },
+            { label: "5", classe: "preto" },
+            { label: "6", classe: "preto" },
+            { label: "-", classe: "laranja" },
+            { label: "1", classe: "preto" },
+            { label: "2", classe: "preto" },
+            { label: "3", classe: "preto" },
+            { label: "+", classe: "laranja" },
+            { label: "0", classe: "preto zero" },
+            { label: ".", classe: "preto" },
+            { label: "=", classe: "laranja" },
+        ];
+
+        const calculadora = document.getElementById("calculadora");
+
+        const display = document.createElement("input");
+        display.setAttribute("id", "display");
+        display.setAttribute("readonly", true);
+        calculadora.appendChild(display);
+
+        let expressao = "";
+
+        botoes.forEach(botao => {
+            const btn = document.createElement("button");
+            btn.textContent = botao.label;
+            btn.className = botao.classe;
+            btn.addEventListener("click", () => manipularClique(botao.label));
+            calculadora.appendChild(btn);
+        });
+
+        function manipularClique(valor) {
+            if (valor === "AC") {
+                expressao = "";
+            } else if (valor === "=") {
+                try {
+                    expressao = eval(expressao).toString();
+                } catch {
+                    expressao = "Erro";
+                }
+            } else if (valor === "+/-") {
+                if (expressao && !isNaN(expressao)) {
+                    expressao = (parseFloat(expressao) * -1).toString();
+                }
+            } else {
+                expressao += valor;
+            }
+            display.value = expressao;
+        }
+    </script>
+</body>
+</html>
