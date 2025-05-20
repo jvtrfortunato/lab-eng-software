@@ -2,51 +2,18 @@
 campo de texto e exiba em uma janela de alert se o texto é ou 
 não um palíndromo. -->
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificador de Palíndromo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 300px;
-        }
-        input, button {
-            padding: 10px;
-            width: 100%;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="css/ex3.css">
 </head>
 <body>
     <div class="container">
         <h2>Verificador de Palíndromo</h2>
-        <input type="text" id="texto" placeholder="Digite uma palavra ou frase">
-        <button onclick="verificarPalindromo()">Verificar</button>
+            <input type="text" id="texto" placeholder="Digite uma palavra ou frase">
+            <button onclick="verificarPalindromo()">Verificar</button>
     </div>
 
     <script>

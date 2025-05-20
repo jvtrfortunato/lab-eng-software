@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Cadastro</h1>
+        <div class="opcoes">
+            <label class="opcao">
+                <input type="radio" name="tipo" value="professor" onclick="mostrarCampos()"> Professor
+            </label>
+            <label class="opcao">
+                <input type="radio" name="tipo" value="aluno" onclick="mostrarCampos()" checked> Aluno
+            </label>
+        </div>
+        <form id="formulario">
+            <div class="todos-campos">
+                <div id="campos-comuns">
+                    <label for="nome">Nome:</label>
+                    <input type="text" placeholder="Digite seu nome completo" id="nome">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" placeholder="Digite seu email" id="email">
+                    
+                    <label for="dataNascimento">Data Nascimeto:</label>
+                    <input class="pequeno" type="date" id="dataNascimento">
+                    
+                    <label for="telefoneFixo">Telefone Fixo</label>
+                    <input class="medio" type="tel" placeholder="(99)99999-9999" id="telefoneFixo">
+                    
+                    <label for="telefoneCelular">Telefone Celular</label>
+                    <input class="medio" type="tel" placeholder="(99)99999-9999" id="telefoneCelular">
+                </div>
+                
+                <div id="campos-professor" class="hidden">
+                    <div class="campos-professor">                       
+                        <label for="area">Área:</label>
+                        <input type="text" placeholder="Digite sua área de atuação" id="area">
+                        
+                        <label for="matriculaProf">Matrícula:</label>
+                        <input type="text" placeholder="Digite sua matrícula" id="matriculaProf">
+
+                        <label for="lattes">Lattes:</label>
+                        <input type="text" placeholder="Digite aqui o endereço para seu Lattes" id="lattes">
+                    </div>
+                </div>
+                
+                <div id="campos-aluno" class="hidden">
+                    <div class="campos-aluno">
+                        <label for="curso">Curso:</label>
+                        <input type="text" placeholder="Digite seu curso" id="curso">
+
+                        <label for="matriculaAluno">Matrícula:</label>
+                        <input type="text" placeholder="Digite sua matrícula" id="matriculaAluno">
+                    </div>
+                </div>
+                
+                <div class="botoes">
+                    <button type="button" onclick="enviarFormulario()">Enviar</button>
+                    <button type="reset">Redefinir</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function mostrarCampos() {
+            const tipoSelecionado = document.querySelector('input[name="tipo"]:checked').value;
+            document.getElementById("campos-professor").classList.toggle("hidden", tipoSelecionado !== "professor");
+            document.getElementById("campos-aluno").classList.toggle("hidden", tipoSelecionado !== "aluno");
+        }
+
+        function enviarFormulario() {
+            const tipo = document.querySelector('input[name="tipo"]:checked').value;
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const dataNascimento = document.getElementById("dataNascimento").value;
+            const telefoneFixo = document.getElementById("telefoneFixo").value;
+            const telefoneCelular = document.getElementById("telefoneCelular").value;
+            let dados;
+            
+            if (tipo === "professor") {
+                dados = {
+                    tipo,
+                    nome,
+                    email,
+                    dataNascimento,
+                    telefoneFixo,
+                    telefoneCelular,
+                    area: document.getElementById("area").value,
+                    matricula: document.getElementById("matriculaProf").value,
+                    lattes: document.getElementById("lattes").value
+                };
+            } else {
+                dados = {
+                    tipo,
+                    nome,
+                    email,
+                    dataNascimento,
+                    telefoneFixo,
+                    telefoneCelular,
+                    curso: document.getElementById("curso").value,
+                    matricula: document.getElementById("matriculaAluno").value
+                };
+            }
+            console.log(dados);
+            alert("Dados enviados com sucesso!");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarCampos();
+        });
+    </script>
+</body>
+</html>

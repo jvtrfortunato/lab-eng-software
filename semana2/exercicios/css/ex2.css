@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
-
 body {
-    font-family: "Inter", serif;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #f4f4f4;
     margin: 0;
 }
 .container {
@@ -19,13 +17,7 @@ body {
 h1 {
     color: #007bff;
 }
-p {
-    margin: 10px 0;
-}
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
+.clock {
+    font-size: 2em;
+    font-weight: bold;
 }
